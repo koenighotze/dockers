@@ -1,0 +1,23 @@
+# todo build custom Jenkins with git, maven, jdk 8
+
+
+
+jenkins:
+  build: .
+  #image: jenkins
+  ports:
+    - 8080:8080
+    - 50000:50000
+    # todo volumes
+sonar:
+  image: sonarqube:5.1
+  ports:
+    - 9000:9000
+    - 9092:9092
+  expose:
+    - 9000
+    - 9092
+
+# todo
+# nexus:
+#   image:
