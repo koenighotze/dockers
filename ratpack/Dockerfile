@@ -10,7 +10,7 @@ WORKDIR /home/ratpack/
 # checkout ratpack project
 RUN git clone https://github.com/ratpack/ratpack ratpack-project
 
-RUN wget https://dl.bintray.com/pledbrook/lazybones-templates/lazybones-0.8.1.zip && unzip lazybones-0.8.1.zip
+RUN wget -nv https://dl.bintray.com/pledbrook/lazybones-templates/lazybones-0.8.1.zip && unzip -q lazybones-0.8.1.zip
 ENV LAZYBONES_HOME /home/ratpack/lazybones-0.8.1
 ENV PATH $LAZYBONES_HOME/bin:$PATH
 

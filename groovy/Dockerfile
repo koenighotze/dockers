@@ -9,20 +9,20 @@ RUN apt-get upgrade -y
 RUN apt-get install -y wget curl unzip
 
 # install jdk 8
-RUN wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie"  http://download.oracle.com/otn-pub/java/jdk/8u60-b27/jdk-8u60-linux-x64.tar.gz
+RUN wget -nv --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie"  http://download.oracle.com/otn-pub/java/jdk/8u60-b27/jdk-8u60-linux-x64.tar.gz
 RUN tar -C /usr/local/ -xvzf jdk-8u60-linux-x64.tar.gz
 ENV JAVA_HOME /usr/local/jdk1.8.0_60
 
 RUN locale-gen en_US.UTF-8
 
 # install gradle
-RUN wget https://services.gradle.org/distributions/gradle-2.8-all.zip 
-RUN unzip gradle-2.8-all.zip
+RUN wget -nv https://services.gradle.org/distributions/gradle-2.8-all.zip
+RUN unzip -q gradle-2.8-all.zip
 ENV GRADLE_HOME /usr/local/gradle-2.8/
 
 # install groovy
-RUN wget http://dl.bintray.com/groovy/maven/apache-groovy-sdk-2.4.5.zip
-RUN unzip apache-groovy-sdk-2.4.5.zip
+RUN wget -nv http://dl.bintray.com/groovy/maven/apache-groovy-sdk-2.4.5.zip
+RUN unzip -q apache-groovy-sdk-2.4.5.zip
 ENV GROOVY_HOME /usr/local/groovy-2.4.5/
 
 ENV LANG en_US.UTF-8
@@ -38,4 +38,3 @@ ENV SRC_VOLUME $HOME/share
 VOLUME [$SRC_VOLUME]
 
 CMD ["/bin/bash"]
-
