@@ -9,13 +9,15 @@ ENV LC_ALL en_US.UTF-8
 RUN apt-get -qq update
 RUN apt-get -y install curl wget
 WORKDIR /tmp/
-RUN wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://www.java.net/download/jdk9/archive/b85/binaries/jdk-9-ea-bin-b85-linux-x64-08_oct_2015.tar.gz  
-RUN tar xvzf jdk-9-ea-bin-b85-linux-x64-08_oct_2015.tar.gz && rm jdk-9-ea-bin-b85-linux-x64-08_oct_2015.tar.gz
+RUN wget -nv --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://www.java.net/download/jdk9/archive/b85/binaries/jdk-9-ea-bin-b85-linux-x64-08_oct_2015.tar.gz
+RUN tar xzf jdk-9-ea-bin-b85-linux-x64-08_oct_2015.tar.gz && rm jdk-9-ea-bin-b85-linux-x64-08_oct_2015.tar.gz
 RUN mv jdk1.9.0 /usr/local/
 
 RUN apt-get -y install maven
 
-ENV PATH /usr/local/jdk1.9.0/bin:$PATH 
+ENV PATH /usr/local/jdk1.9.0/bin:$PATH
+
+RUN rm *
 
 # setup volume for external sources
 RUN mkdir -p /home/java/share
