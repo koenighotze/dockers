@@ -7,9 +7,11 @@ ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
-RUN apk-install bash openjdk8
+RUN apk-install bash \
+                ca-certificates \
+                openjdk8
 
-ADD prompt.sh /etc/profile.d/
+COPY prompt.sh /etc/profile.d/
 
 ENV JAVA_HOME /usr/lib/jvm/default-jvm
 

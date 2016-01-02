@@ -13,11 +13,13 @@ WORKDIR /tmp/
 
 RUN wget -nv http://mirror.23media.de/apache/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz && tar xzf apache-maven-3.3.9-bin.tar.gz -C /usr/local/
 
-ADD prompt.sh /etc/profile.d/
+COPY prompt.sh /etc/profile.d/
 
 ENV JAVA_HOME /usr/lib/jvm/default-jvm
 ENV MAVEN_HOME /usr/local/apache-maven-3.3.9
 ENV PATH $PATH:/usr/local/apache-maven-3.3.9/bin
+
+RUN echo 'export PATH=$PATH:/usr/local/apache-maven-3.3.9/bin' > /etc/profile.d/path.sh
 
 RUN rm *
 
@@ -27,5 +29,6 @@ USER java
 
 ENV SRC_VOLUME /volumes/share
 VOLUME [$SRC_VOLUME]
+WORKDIR $SRC_VOLUME
 
 CMD ["bash", "-l"]
