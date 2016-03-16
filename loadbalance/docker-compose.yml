@@ -1,0 +1,29 @@
+version: '2'
+
+services:
+  loadbalancer:
+    #image: koenighotze/balance-nginx
+    build: ./balance-nginx
+    # networks:
+    #   - external
+    #   - internal
+    ports:
+      - 8080:80
+  guest1:
+    build: ./basic-nginx
+    volumes:
+      - ~/dev/docker/loadbalance/guest1:/usr/share/nginx/html:ro
+    ports:
+      - 8081:80
+    # networks:
+    #   - internal
+  guest2:
+    build: ./basic-nginx
+    volumes:
+      - ~/dev/docker/loadbalance/guest2:/usr/share/nginx/html:ro
+    ports:
+      - 8082:80
+
+# networks:
+#   external: overlay
+#   internal: overlay
