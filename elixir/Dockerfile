@@ -37,7 +37,7 @@ USER elixir
 # setup volume for sharing scripts
 ENV SCRIPTS_VOLUME $HOME/src
 
-VOLUME [$SCRIPTS_VOLUME]
+VOLUME [$SCRIPTS_VOLUME, $HOME/.mix, $HOME/.npm, $HOME/.hex]
 
 # Run REPL
 CMD ["iex"]
