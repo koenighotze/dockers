@@ -17,17 +17,15 @@ RUN apk add --update  erlang-dev erlang-ssl erlang-inets erlang-dev \
 RUN adduser elixir -h /home/elixir -s /bin/bash -D
 RUN chmod +s /bin/busybox
 
-ENV ELIXIR_VERSION 1.2.4
+ENV ELIXIR_VERSION 1.3.0
 RUN wget https://github.com/elixir-lang/elixir/releases/download/v${ELIXIR_VERSION}/Precompiled.zip
-RUN mkdir -p /opt/elixir1.2.4/
-RUN unzip Precompiled.zip -d /opt/elixir1.2.4/
-RUN ln -s /opt/elixir1.2.4/ /opt/elixir
+RUN mkdir -p /opt/elixir${ELIXIR_VERSION}/
+RUN unzip Precompiled.zip -d /opt/elixir${ELIXIR_VERSION}/
+RUN ln -s /opt/elixir${ELIXIR_VERSION}/ /opt/elixir
 ENV PATH $PATH:/opt/elixir/bin
 
 USER elixir
 WORKDIR /home/elixir/
-#RUN wget -nv https://github.com/koenighotze/talks-elixir-intro/archive/master.zip && unzip -q master.zip && rm master.zip
-#RUN wget -nv https://github.com/elixir-lang/elixir/archive/master.zip && unzip -q master.zip && rm master.zip
 RUN mix local.hex
 
 USER root
