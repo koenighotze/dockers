@@ -1,0 +1,21 @@
+version: '3.0'
+
+services:
+  postgres:
+    image: postgres:9.6.3-alpine
+    environment:
+      POSTGRES_DB: gitrob
+      POSTGRES_USER: gitrob
+      POSTGRES_PASSWORD: gitrob
+
+  gitrob:
+    build: .
+    image: koenighotze/gitrob:latest
+    command: ${gitrob_organisations}
+    environment:
+      - GITHUB_ACCESS_TOKENS
+    depends_on:
+      - postgres
+    ports:
+      - 8000:8000
+

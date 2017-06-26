@@ -1,0 +1,2 @@
+---
+sql_connection_uri: postgres://gitrob:gitrob@postgres:5432/gitrob
