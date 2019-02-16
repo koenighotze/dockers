@@ -1,12 +1,14 @@
 FROM nicolaka/netshoot:edge
 
+COPY motd /etc/motd
 RUN apk add --no-cache \
     jq=1.6-r0 \
     httpie=1.0.2-r0
 
-COPY motd /etc/motd
+RUN pip install http-prompt==1.0.0
 
 COPY .profile /root/
+COPY http-promp-config.py /root/.config/http-prompt/config.py
 
 ARG NAME
 ARG DESCRIPTION
