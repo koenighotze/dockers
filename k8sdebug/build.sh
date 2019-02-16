@@ -4,7 +4,7 @@ docker run --rm -i hadolint/hadolint < Dockerfile || exit
 
 VCS_URL=`git config --get remote.origin.url`
 BUILD_TIMESTAMP=`date -u +'%Y-%m-%dT%H:%M:%SZ'`
-VERSION=0.0.1
+VERSION=latest
 COMMIT_SHA=`git rev-parse HEAD`
 DIRTY=`( [[ -z $(git status -s) ]] && echo '' ) || echo '-dirty'`
 
