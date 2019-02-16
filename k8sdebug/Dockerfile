@@ -6,6 +6,8 @@ RUN apk add --no-cache \
 
 COPY motd /etc/motd
 
+COPY .profile /root/
+
 ARG NAME
 ARG DESCRIPTION
 ARG VERSION
