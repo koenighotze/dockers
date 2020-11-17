@@ -1,11 +1,11 @@
 FROM debian:10-slim
 
 RUN apt-get update \
-    && apt-get install -y gnupg2 software-properties-common \
+    && apt-get install --no-install-recommends -y gnupg2=2.2.12-1+deb10u1 software-properties-common=0.96.20.2-2 \
     && apt-key adv --keyserver keyserver.ubuntu.com --recv-key C99B11DEB97541F0 \
     && apt-add-repository https://cli.github.com/packages \
     && apt-get update \
-    && apt-get install -y gh \
+    && apt-get install --no-install-recommends -y gh=1.2.1 \
     && rm -rf /var/lib/apt/lists/*
 
 ARG NAME
