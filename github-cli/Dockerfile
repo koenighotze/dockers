@@ -1,11 +1,11 @@
-FROM debian:10-slim
+FROM debian:11.6-slim
 
 RUN apt-get update \
-    && apt-get install --no-install-recommends -y gnupg2=2.2.12-1+deb10u1 software-properties-common=0.96.20.2-2 \
-    && apt-key adv --keyserver keyserver.ubuntu.com --recv-key C99B11DEB97541F0 \
+    && apt-get install --no-install-recommends -y gnupg2=2.2.27-2+deb11u2 software-properties-common=0.96.20.2-2.1 \
+    && apt-key adv --keyserver keyserver.ubuntu.com --recv-key 23F3D4EA75716059 \
     && apt-add-repository https://cli.github.com/packages \
     && apt-get update \
-    && apt-get install --no-install-recommends -y gh=1.2.1 \
+    && apt-get install --no-install-recommends -y gh=2.21.2 \
     && rm -rf /var/lib/apt/lists/*
 
 ARG NAME
